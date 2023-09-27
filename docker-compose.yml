@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  db:
+    image: mariadb
+    restart: unless-stopped
+    env_file:
+      - mariadb.env
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./conf/init.sql:/docker-entrypoint-initdb.d/db.sql
